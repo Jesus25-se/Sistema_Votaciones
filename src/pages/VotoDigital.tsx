@@ -170,71 +170,7 @@ export default function VotoDigital() {
         </div>
       </section>
 
-      {/* Requisitos */}
-      <section
-        style={{
-          backgroundColor: "#0b3b6f",
-          color: "white",
-          padding: "60px 20px",
-          marginTop: "40px",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1000px",
-            margin: "0 auto",
-            lineHeight: 1.8,
-          }}
-        >
-          <ul style={{ fontSize: "16px", listStyleType: "disc", paddingLeft: "20px" }}>
-            <li>Conexión a internet estable.</li>
-            <li>
-              DNIe con certificados digitales vigentes hasta al menos el 08/06/2026 y PIN
-              registrado ante el RENIEC. <a href="#" style={{ color: "#ffd500" }}>Ver versión</a>
-            </li>
-            <li>
-              Pertenecer al padrón de grupos prioritarios.{" "}
-              <a href="#" style={{ color: "#ffd500" }}>Ver más</a>
-            </li>
-            <li>
-              Aplicativo ONPEID instalado. <a href="#" style={{ color: "#ffd500" }}>Descargar</a>
-            </li>
-            <li>Correo electrónico activo.</li>
-            <li>
-              Sistema operativo Windows o macOS (PC, Mac, laptop), Android o iOS (celular).
-            </li>
-            <li>Lector del DNIe (*) (para PC, Mac, laptop).</li>
-            <li>Celular con tecnología NFC con ISO 14443-B (**). <a href="#" style={{ color: "#ffd500" }}>Saber más</a></li>
-          </ul>
-          <p style={{ fontSize: "14px", marginTop: "20px", opacity: 0.9 }}>
-            (*) Para DNIe versión 1, versión 2 y versión 3. <br />
-            (**) Para DNIe versión 2 y versión 3.
-          </p>
-        </div>
-
-        <div style={{ textAlign: "center", marginTop: "30px" }}>
-          <a
-            href="#"
-            style={{
-              background: "#ffd500",
-              color: "#0b3b6f",
-              padding: "14px 50px",
-              borderRadius: "10px",
-              fontWeight: "700",
-              textDecoration: "none",
-              transition: "0.3s ease",
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.background = "white";
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.background = "#ffd500";
-            }}
-          >
-            Quiero registrarme
-          </a>
-        </div>
-      </section>
+      {/* SECCIÓN DE REQUISITOS ELIMINADA */}
     </div>
   );
 }

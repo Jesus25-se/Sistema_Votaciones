@@ -3,72 +3,98 @@ import { motion } from "framer-motion";
 export default function FinalCard() {
   return (
     <section className="bg-white py-16 px-6">
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
+      {/* CONTENIDO PRINCIPAL ELIMINADO - SOLO QUEDA EL FOOTER */}
+
+      {/* Pie de página de ParaElectores */}
+      <motion.footer
+        style={{
+          backgroundColor: "#0b3b6f",
+          color: "white",
+          textAlign: "center",
+          padding: "50px 20px",
+          borderTop: "6px solid #ffd500",
+          marginTop: "60px",
+          fontFamily: "'Poppins', Arial, sans-serif",
+        }}
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200"
       >
-        {/* barras superiores */}
-        <div className="flex h-2">
-          <div className="flex-1 bg-gray-300" />
-          <div className="flex-1 bg-[#0b3b6f]" />
-        </div>
-
-        {/* contenido principal - TODOS los textos en azul oscuro */}
-        <div className="grid md:grid-cols-2 gap-8 p-10 md:p-14 text-[#0b3b6f]">
-          {/* Columna izquierda */}
-          <div>
-            <p className="uppercase text-sm tracking-widest text-[#0b3b6f] mb-3 font-semibold">
-              ACERCA DE
-            </p>
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              Conoce más sobre el proceso electoral 2026
-            </h3>
-            <p className="leading-relaxed mb-6">
-              Estar informados es fundamental para una democracia saludable.
-              ¿Quieres conocer más sobre este importante proceso electoral?
-            </p>
-            <motion.a
-              href="/conoce-mas"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-block bg-[#0b3b6f] text-white font-semibold px-6 py-3 rounded-full shadow-md hover:bg-[#0a2f57] transition"
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            maxWidth: "1100px",
+            margin: "0 auto",
+            textAlign: "left",
+            gap: "30px",
+          }}
+        >
+          {/* Columna 1: Oficina Central */}
+          <div style={{ flex: 1, minWidth: "250px" }}>
+            <h3
+              style={{
+                color: "#ffd500",
+                marginBottom: "10px",
+                fontSize: "17px",
+                fontWeight: "600",
+              }}
             >
-              Saber más
-            </motion.a>
+              Oficina central
+            </h3>
+            <p style={{ margin: "6px 0", fontSize: "15px" }}>
+              Jr. Washington 1894, Cercado de Lima
+            </p>
+            <p style={{ margin: "6px 0", fontSize: "15px" }}>
+              Lunes a viernes de 8:30 a. m. a 5:00 p. m.
+            </p>
           </div>
 
-          {/* Divisor vertical */}
-          <div className="hidden md:flex justify-center">
-            <div className="w-px bg-gray-300 h-full"></div>
+          {/* Columna 2: Contáctanos */}
+          <div style={{ flex: 1, minWidth: "250px", textAlign: "center" }}>
+            <h3
+              style={{
+                color: "#ffd500",
+                marginBottom: "10px",
+                fontSize: "17px",
+                fontWeight: "600",
+              }}
+            >
+              Contáctanos
+            </h3>
+            <p style={{ margin: "6px 0", fontSize: "15px" }}>
+              informes@onpe.gob.pe
+            </p>
+            <p style={{ margin: "6px 0", fontSize: "15px" }}>(01) 4170630</p>
+            <p style={{ margin: "6px 0", fontSize: "15px" }}>
+              Whatsapp: 995 404 991
+            </p>
           </div>
 
-          {/* Columna derecha */}
-          <div>
-            <p className="uppercase text-sm tracking-widest text-[#0b3b6f] mb-3 font-semibold">
-              LO QUE DEBES SABER
-            </p>
-            <h4 className="text-xl font-semibold mb-4">
-              Algunos puntos importantes sobre estas elecciones 2026
-            </h4>
-            <p className="mb-3">
-              Las Elecciones Generales se realizarán el{" "}
-              <strong className="text-[#0b3b6f]">Domingo 12 de abril de 2026 de 7 a. m. a 5 p. m.</strong>
-            </p>
-            <p className="mb-3">
-              Donde más de 27 millones de peruanos elegirán quienes tomarán los
-              siguientes cargos:
-            </p>
-            <p className="font-semibold">
-              Presidente, vicepresidentes, senadores, diputados y titulares del
-              parlamento andino.
-            </p>
+          {/* Columna 3: Síguenos */}
+          <div
+            style={{
+              flex: 1,
+              minWidth: "250px",
+              textAlign: "right",
+            }}
+          >
+            <h3
+              style={{
+                color: "#ffd500",
+                marginBottom: "10px",
+                fontSize: "17px",
+                fontWeight: "600",
+              }}
+            >
+              Síguenos
+            </h3>
+            <p style={{ fontSize: "20px", marginTop: "10px" }}>🌐 💬 📱</p>
           </div>
         </div>
-
-      </motion.div>
+      </motion.footer>
     </section>
   );
 }
