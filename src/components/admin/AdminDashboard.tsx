@@ -40,10 +40,6 @@ export default function AdminDashboard() {
     return conteo;
   };
 
-  const handleLogout = () => {
-    localStorage.clear();
-    navigate("/admin");
-  };
 
   // definimos el array de categorias con el tipo correcto
   const categorias: Voto["categoria"][] = ["presidencial", "congreso", "parlamento"];
@@ -116,29 +112,7 @@ export default function AdminDashboard() {
             </span>
           </div>
 
-          <button
-            onClick={() => navigate('/admin/data-upload')}
-            className="btn btn-outline-primary fw-semibold rounded-pill"
-          >
-            <i className="fas fa-upload me-2"></i>
-            Cargar Datos
-          </button>
-
-          <button
-            onClick={() => navigate('/admin/analytics')}
-            className="btn btn-outline-info fw-semibold rounded-pill"
-          >
-            <i className="fas fa-chart-line me-2"></i>
-            Análisis Predictivo
-          </button>
-
-          <button
-            onClick={handleLogout}
-            className="btn btn-outline-danger fw-semibold rounded-pill"
-          >
-            <i className="fas fa-sign-out-alt me-2"></i>
-            Cerrar sesión
-          </button>
+          {/* SIN BOTONES - SOLO EL INDICADOR "EN VIVO" */}
         </div>
       </div>
 
