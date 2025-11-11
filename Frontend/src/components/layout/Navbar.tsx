@@ -75,7 +75,6 @@ export default function Navbar() {
           { to: "/", text: "Inicio" },
           { to: "/votar", text: "Votación" },
           { to: "/para-electores", text: "Para electores" },
-          { to: "/organizacion", text: "La organización" },
           { to: "/proceso", text: "Acerca del proceso" },
           { to: "/lo-nuevo", text: "Lo nuevo" },
           { to: "/voto-digital", text: "Voto Digital" },

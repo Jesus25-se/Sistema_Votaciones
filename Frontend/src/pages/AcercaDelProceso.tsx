@@ -47,26 +47,26 @@ export default function AcercaDelProceso() {
   ];
 
   return (
-    <div className="min-h-screen bg-white py-10 px-4 flex flex-col items-center">
+    <div className="container py-5">
       {/* Encabezado */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="text-center mb-8"
+        className="text-center mb-5"
       >
-        <h1 className="text-2xl font-bold text-[#0b3b6f] mb-2">
+        <h1 className="fw-bold text-primary mb-3">
           Acerca del Proceso Electoral 2026
         </h1>
-        <div className="h-1 w-20 bg-[#0b3b6f] mx-auto rounded-full mb-3"></div>
-        <p className="text-gray-700 max-w-md mx-auto text-xs leading-relaxed">
+        <div className="mx-auto bg-primary rounded-pill" style={{ width: "100px", height: "4px" }}></div>
+        <p className="text-secondary mt-3 mx-auto" style={{ maxWidth: "600px" }}>
           Etapas principales del proceso electoral peruano para las Elecciones
           Generales 2026, garantizadas por la ONPE, el JNE y el RENIEC.
         </p>
       </motion.div>
 
       {/* Lista de eventos */}
-      <div className="flex flex-col items-center gap-3 w-full max-w-2xl">
+      <div className="row justify-content-center g-4">
         {eventos.map((item, index) => (
           <motion.div
             key={index}
@@ -75,30 +75,36 @@ export default function AcercaDelProceso() {
             transition={{ duration: 0.4, ease: "easeOut" }}
             whileHover={{
               scale: 1.03,
-              boxShadow: "0 4px 12px rgba(11, 59, 111, 0.25)",
-              backgroundColor: "#f2f7ff",
+              boxShadow: "0 4px 14px rgba(13, 110, 253, 0.25)",
+              backgroundColor: "#f8f9fa",
             }}
-            className="bg-white border border-[#0b3b6f] rounded-lg p-4 shadow-sm text-center transition-all duration-300 w-full"
+            className="col-md-6 col-lg-4"
           >
-            <h2 className="text-base font-semibold text-[#0b3b6f] mb-1">
-              {item.titulo}
-            </h2>
-            <p className="text-xs text-blue-700 font-medium mb-1">
-              📅 {item.fecha}
-            </p>
-            <p className="text-gray-600 text-xs leading-relaxed">
-              {item.descripcion}
-            </p>
+            <div className="card border-primary h-100 text-center shadow-sm p-3 transition-all">
+              <div className="card-body">
+                <h5 className="card-title fw-semibold text-primary mb-2">
+                  {item.titulo}
+                </h5>
+                <p className="text-muted small mb-2">
+                  <i className="bi bi-calendar-event me-2"></i>
+                  {item.fecha}
+                </p>
+                <p className="card-text text-secondary small">
+                  {item.descripcion}
+                </p>
+              </div>
+            </div>
           </motion.div>
         ))}
       </div>
 
-      {/* Línea decorativa inferior */}
+      {/* Línea inferior decorativa */}
       <motion.div
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
-        className="w-full max-w-2xl h-0.5 bg-[#0b3b6f] mt-10 rounded-full origin-left"
+        className="mx-auto mt-5 bg-primary rounded-pill"
+        style={{ width: "80%", height: "4px", transformOrigin: "left" }}
       />
     </div>
   );

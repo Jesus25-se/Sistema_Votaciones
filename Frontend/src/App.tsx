@@ -13,6 +13,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import ParaElectores from "./pages/ParaElectores";
 import VotoDigital from "./pages/VotoDigital";
 import LoNuevo from "./pages/LoNuevo";
+import AcercaDelProceso from "./pages/AcercaDelProceso";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/para-electores" element={<ParaElectores />} />
         <Route path="/voto-digital" element={<VotoDigital />} />
         <Route path="/lo-nuevo" element={<LoNuevo />} />
+        <Route path="/proceso" element={<AcercaDelProceso />} />
         
         {/* Rutas administrativas CON AdminLayout */}
         <Route path="/" element={<AdminLayout />}>
@@ -34,6 +36,7 @@ export default function App() {
           <Route path="admin/dashboard" element={<MetricsDashboard />} />
           <Route path="admin/upload" element={<DataUpload />} />
           <Route path="admin/analytics" element={<PredictiveAnalytics />} />
+          
         </Route>
       </Routes>
     </>

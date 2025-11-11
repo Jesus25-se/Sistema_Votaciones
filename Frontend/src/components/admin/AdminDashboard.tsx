@@ -18,7 +18,8 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend, Title,
 
 export default function AdminDashboard() {
   const [votos, setVotos] = useState<Voto[]>([]);
-  const [activeCategory, setActiveCategory] = useState<string>("presidencial");
+  // Estado tipado con el tipo literal proveniente de Voto
+  const [activeCategory, setActiveCategory] = useState<Voto["categoria"]>("presidencial");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,6 +30,7 @@ export default function AdminDashboard() {
     return () => clearInterval(interval);
   }, []);
 
+  // contarPorCategoria ya estaba bien tipado; nos aseguramos que use Voto["categoria"]
   const contarPorCategoria = (categoria: Voto["categoria"]) => {
     const filtrados = votos.filter((v) => v.categoria === categoria);
     const conteo: Record<string, number> = {};
@@ -43,9 +45,11 @@ export default function AdminDashboard() {
     navigate("/admin");
   };
 
+  // definimos el array de categorias con el tipo correcto
   const categorias: Voto["categoria"][] = ["presidencial", "congreso", "parlamento"];
 
-  const getVotosPorCategoria = (categoria: string) =>
+  // ajustar la firma para que acepte Voto["categoria"]
+  const getVotosPorCategoria = (categoria: Voto["categoria"]) =>
     votos.filter((v) => v.categoria === categoria).length;
 
   const colorPalette = {
@@ -53,7 +57,8 @@ export default function AdminDashboard() {
     pastel: ["#4dabf7", "#9775fa", "#da77f2", "#ff8787", "#ffa94d", "#ffd43b", "#69db7c", "#38d9a9", "#3bc9db", "#748ffc"],
   };
 
-  const getCategoryData = (categoria: string) => {
+  // getCategoryData: parámetro tipado también
+  const getCategoryData = (categoria: Voto["categoria"]) => {
     const datosContados = contarPorCategoria(categoria);
     const total = Object.values(datosContados).reduce((sum, count) => sum + count, 0);
 
@@ -111,7 +116,6 @@ export default function AdminDashboard() {
             </span>
           </div>
 
-          {/* Botones de navegación a nuevos módulos */}
           <button
             onClick={() => navigate('/admin/data-upload')}
             className="btn btn-outline-primary fw-semibold rounded-pill"
