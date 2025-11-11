@@ -23,19 +23,28 @@ interface ModelMetrics {
   version: string;
 }
 
-export default function PredictiveAnalytics() {
+interface PredictiveAnalyticsProps {
+  lastTraining?: Date | null;
+}
+
+export default function PredictiveAnalytics({ lastTraining }: PredictiveAnalyticsProps) {
   const [predictions, setPredictions] = useState<Prediction[]>([]);
   const [modelMetrics, setModelMetrics] = useState<ModelMetrics>({
     accuracy: 87.5,
     precision: 91.2,
     recall: 85.8,
-    lastTraining: new Date(),
+    lastTraining: lastTraining || new Date(),
     status: "ready",
     version: "v2.1.4"
   });
   const [selectedTimeFrame, setSelectedTimeFrame] = useState<TimeFrame>("24h");
   const [isTraining, setIsTraining] = useState(false);
   const [lastUpdate, setLastUpdate] = useState<Date>(new Date());
+
+  // Función para formatear números a 1 decimal
+  const formatOneDecimal = (value: number): string => {
+    return value.toFixed(1);
+  };
 
   // Simular predicciones basadas en datos existentes
   useEffect(() => {
@@ -137,7 +146,7 @@ export default function PredictiveAnalytics() {
       <div className="card-body text-center p-3">
         <div className={`bg-${color} bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-2`} 
              style={{ width: '60px', height: '60px' }}>
-          <h4 className={`fw-bold text-${color} mb-0`}>{value}%</h4>
+          <h4 className={`fw-bold text-${color} mb-0`}>{formatOneDecimal(value)}%</h4>
         </div>
         <h6 className="fw-semibold text-dark mb-1">{label}</h6>
         <small className="text-muted">Modelo predictivo</small>
@@ -162,7 +171,7 @@ export default function PredictiveAnalytics() {
           </div>
           <div className="text-end">
             <span className={`badge bg-${getConfidenceColor(prediction.confidence)} bg-opacity-10 text-${getConfidenceColor(prediction.confidence)} mb-1`}>
-              {prediction.confidence}% confianza
+              {formatOneDecimal(prediction.confidence)}% confianza
             </span>
             <div className="small text-muted">
               {getTrendIcon(prediction.trend)}
@@ -296,6 +305,7 @@ export default function PredictiveAnalytics() {
           </div>
         </div>
       </div>
+
       {/* Gráficos Estadísticos Simples */}
       <div className="row mb-4">
         <div className="col-12">
@@ -306,55 +316,58 @@ export default function PredictiveAnalytics() {
                 Gráficos Predictivo
               </h5>
             </div>
-      <div className="card-body">
-        <div className="row g-3">
-          {/* Gráfico 1: Barras - Participación por hora */}
-          <div className="col-md-6">
-            <div className="card border-0 bg-light">
-              <div className="card-body">
-                <h6 className="fw-semibold">Participación por Hora</h6>
-                <div className="d-flex align-items-end gap-2 mt-3" style={{height: "120px"}}>
-                  {[25, 45, 65, 80, 70, 60].map((value, i) => (
-                    <div key={i} className="flex-fill d-flex flex-column align-items-center">
-                      <div 
-                        className="bg-primary rounded w-100"
-                        style={{height: `${value}%`}}
-                      />
-                      <small className="text-muted mt-1">{["08", "10", "12", "14", "16", "18"][i]}:00</small>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Gráfico 2: Distribución de votos */}
-          <div className="col-md-6">
-            <div className="card border-0 bg-light">
-              <div className="card-body">
-                <h6 className="fw-semibold">Distribución de Votos</h6>
-                <div className="d-flex align-items-center mt-3">
-                  <div className="flex-fill">
-                    {["Alianza Progreso", "Frente Democrático", "Unidad Nacional"].map((party, i) => (
-                      <div key={i} className="d-flex align-items-center mb-2">
-                        <div 
-                          className="rounded me-2"
-                          style={{
-                            width: "12px",
-                            height: "12px",
-                            backgroundColor: ["#0d6efd", "#198754", "#ffc107"][i]
-                          }}
-                        />
-                        <small className="text-muted">{party}</small>
-                        <small className="fw-bold ms-auto">{[34, 28, 19][i]}%</small>
+            <div className="card-body">
+              <div className="row g-3">
+                {/* Gráfico 1: Barras - Participación por hora */}
+                <div className="col-md-6">
+                  <div className="card border-0 bg-light">
+                    <div className="card-body">
+                      <h6 className="fw-semibold">Participación por Hora</h6>
+                      <div className="d-flex align-items-end gap-2 mt-3" style={{height: "120px"}}>
+                        {[25, 45, 65, 80, 70, 60].map((value, i) => (
+                          <div key={i} className="flex-fill d-flex flex-column align-items-center">
+                            <div 
+                              className="bg-primary rounded w-100"
+                              style={{height: `${value}%`}}
+                            />
+                            <small className="text-muted mt-1">{["08", "10", "12", "14", "16", "18"][i]}:00</small>
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    </div>
                   </div>
-                  <div className="ms-4">
-                    <div 
-                      className="rounded-circle border border-3 border-primary"
-                      style={{width: "80px", height: "80px"}}
-                    />
+                </div>
+                
+                {/* Gráfico 2: Distribución de votos */}
+                <div className="col-md-6">
+                  <div className="card border-0 bg-light">
+                    <div className="card-body">
+                      <h6 className="fw-semibold">Distribución de Votos</h6>
+                      <div className="d-flex align-items-center mt-3">
+                        <div className="flex-fill">
+                          {["Alianza Progreso", "Frente Democrático", "Unidad Nacional"].map((party, i) => (
+                            <div key={i} className="d-flex align-items-center mb-2">
+                              <div 
+                                className="rounded me-2"
+                                style={{
+                                  width: "12px",
+                                  height: "12px",
+                                  backgroundColor: ["#0d6efd", "#198754", "#ffc107"][i]
+                                }}
+                              />
+                              <small className="text-muted">{party}</small>
+                              <small className="fw-bold ms-auto">{[34, 28, 19][i]}%</small>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="ms-4">
+                          <div 
+                            className="rounded-circle border border-3 border-primary"
+                            style={{width: "80px", height: "80px"}}
+                          />
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -362,9 +375,6 @@ export default function PredictiveAnalytics() {
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
 
       {/* Predicciones */}
       <div className="row mb-4">
@@ -435,7 +445,7 @@ export default function PredictiveAnalytics() {
                           <strong>Pico de participación</strong> proyectado entre 10:00 - 12:00 horas
                         </li>
                         <li className="mb-2">
-                          <i className="bi check-circle-fill text-success me-2" />
+                          <i className="bi bi-check-circle-fill text-success me-2" />
                           <strong>Áreas urbanas</strong> muestran 25% mayor participación
                         </li>
                       </ul>

@@ -12,7 +12,11 @@ interface UploadedFile {
   status: "success" | "error" | "processing";
 }
 
-export default function DataUpload() {
+interface DataUploadProps {
+  onDataUploaded?: () => void;
+}
+
+export default function DataUpload({ onDataUploaded }: DataUploadProps) {
   const [uploading, setUploading] = useState(false);
   const [uploadHistory, setUploadHistory] = useState<UploadedFile[]>([]);
   const [activeDrag, setActiveDrag] = useState<DatasetType | null>(null);
@@ -44,6 +48,11 @@ export default function DataUpload() {
 
     const success = Math.random() > 0.2;
     newUpload.status = success ? "success" : "error";
+
+    // Notificar que hay nuevos datos disponibles
+    if (success && onDataUploaded) {
+      onDataUploaded();
+    }
 
     setUploadHistory((prev) =>
       prev.map((item) =>

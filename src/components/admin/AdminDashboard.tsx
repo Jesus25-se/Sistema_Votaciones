@@ -111,6 +111,23 @@ export default function AdminDashboard() {
             </span>
           </div>
 
+          {/* Botones de navegación a nuevos módulos */}
+          <button
+            onClick={() => navigate('/admin/data-upload')}
+            className="btn btn-outline-primary fw-semibold rounded-pill"
+          >
+            <i className="fas fa-upload me-2"></i>
+            Cargar Datos
+          </button>
+
+          <button
+            onClick={() => navigate('/admin/analytics')}
+            className="btn btn-outline-info fw-semibold rounded-pill"
+          >
+            <i className="fas fa-chart-line me-2"></i>
+            Análisis Predictivo
+          </button>
+
           <button
             onClick={handleLogout}
             className="btn btn-outline-danger fw-semibold rounded-pill"
