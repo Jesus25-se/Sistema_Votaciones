@@ -14,7 +14,10 @@ export default function Transparencia() {
           <div className="col-md-4 mb-3">
             <div className="card border-0 shadow-sm h-100">
               <div className="card-body">
-                <h5 className="fw-bold text-dark">🔐 Encriptación avanzada</h5>
+                <div className="mb-3">
+                  <i className="bi bi-shield-lock-fill" style={{ fontSize: "2.5rem", color: "#0d6efd" }}></i>
+                </div>
+                <h5 className="fw-bold text-dark">Encriptación avanzada</h5>
                 <p className="text-muted">
                   Todos los datos se transmiten de forma cifrada mediante
                   protocolos seguros.
@@ -25,7 +28,10 @@ export default function Transparencia() {
           <div className="col-md-4 mb-3">
             <div className="card border-0 shadow-sm h-100">
               <div className="card-body">
-                <h5 className="fw-bold text-dark">📊 Auditorías verificables</h5>
+                <div className="mb-3">
+                  <i className="bi bi-graph-up-arrow" style={{ fontSize: "2.5rem", color: "#198754" }}></i>
+                </div>
+                <h5 className="fw-bold text-dark">Auditorías verificables</h5>
                 <p className="text-muted">
                   El sistema permite verificar los resultados en tiempo real sin
                   comprometer la privacidad.
@@ -36,7 +42,10 @@ export default function Transparencia() {
           <div className="col-md-4 mb-3">
             <div className="card border-0 shadow-sm h-100">
               <div className="card-body">
-                <h5 className="fw-bold text-dark">🧾 Registro inalterable</h5>
+                <div className="mb-3">
+                  <i className="bi bi-file-lock-fill" style={{ fontSize: "2.5rem", color: "#dc3545" }}></i>
+                </div>
+                <h5 className="fw-bold text-dark">Registro inalterable</h5>
                 <p className="text-muted">
                   Cada voto queda registrado en un historial que no puede ser
                   modificado ni eliminado.

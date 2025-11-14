@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { BarChart, CloudUpload, Cpu, LogOut, Vote } from "lucide-react";
+import { BarChart, CloudUpload, Cpu, LogOut, Vote, Database } from "lucide-react";
 
 export default function AdminSidebar() {
   const location = useLocation();
@@ -121,6 +121,40 @@ export default function AdminSidebar() {
             >
               <CloudUpload size={18} className="me-3" />
               Cargar Datos
+            </Link>
+          </li>
+
+          {/* Limpieza de Datos - NUEVO */}
+          <li className="nav-item mb-2">
+            <Link
+              to="/admin/cleaning"
+              className={`nav-link d-flex align-items-center fw-semibold px-3 py-2 rounded ${
+                isActive("/admin/cleaning")
+                  ? "active-link"
+                  : "text-light opacity-75"
+              }`}
+              style={{
+                backgroundColor: isActive("/admin/cleaning")
+                  ? "rgba(108,117,125,0.15)"
+                  : "transparent",
+                border: isActive("/admin/cleaning")
+                  ? "1px solid rgba(108,117,125,0.3)"
+                  : "1px solid transparent",
+                transition: "all 0.3s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "rgba(108,117,125,0.1)";
+                e.currentTarget.style.color = "#ffffff";
+              }}
+              onMouseLeave={(e) => {
+                if (!isActive("/admin/cleaning")) {
+                  e.currentTarget.style.backgroundColor = "transparent";
+                  e.currentTarget.style.color = "rgba(255,255,255,0.75)";
+                }
+              }}
+            >
+              <Database size={18} className="me-3" />
+              Limpieza de Datos
             </Link>
           </li>
 

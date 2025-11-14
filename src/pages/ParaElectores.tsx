@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Footer from "../components/layout/Footer";
 
 export default function ParaElectores() {
   return (
@@ -6,17 +7,21 @@ export default function ParaElectores() {
       style={{
         fontFamily: "'Poppins', Arial, sans-serif",
         backgroundColor: "#ffffff",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
-      {/* Sección principal (fondo blanco) */}
+      {/* Sección principal (fondo blanco) - Ocupa el espacio disponible */}
       <section
         style={{
           backgroundColor: "#ffffff",
           color: "#0b3b6f",
-          padding: "80px 0 140px 0",
+          padding: "80px 0",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          flex: 1, // Esto hace que ocupe el espacio disponible
         }}
       >
         <div
@@ -115,7 +120,8 @@ export default function ParaElectores() {
         </div>
       </section>
 
-      {/* SIN FOOTER - ELIMINADO */}
+      {/* FOOTER - Siempre abajo */}
+      <Footer />
     </div>
   );
 }

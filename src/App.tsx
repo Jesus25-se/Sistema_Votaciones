@@ -8,12 +8,12 @@ import AdminDashboard from "./components/admin/AdminDashboard";
 import DataUpload from "./components/admin/DataUpload";
 import MetricsDashboard from "./components/admin/MetricsDashboard";
 import PredictiveAnalytics from "./components/admin/PredictiveAnalytics";
+import DataCleaning from "./components/admin/DataCleaning";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 import ParaElectores from "./pages/ParaElectores";
-import VotoDigital from "./pages/VotoDigital";
 import LoNuevo from "./pages/LoNuevo";
-import AcercaDelProceso from "./pages/AcercaDelProceso";
+import Cronologia from "./pages/Cronologia";
 
 export default function App() {
   return (
@@ -26,9 +26,8 @@ export default function App() {
         <Route path="/votar" element={<VoteForm />} />
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/para-electores" element={<ParaElectores />} />
-        <Route path="/voto-digital" element={<VotoDigital />} />
         <Route path="/lo-nuevo" element={<LoNuevo />} />
-        <Route path="/proceso" element={<AcercaDelProceso />} />
+        <Route path="/cronologia" element={<Cronologia />} />
         
         {/* Rutas administrativas CON AdminLayout */}
         <Route path="/" element={<AdminLayout />}>
@@ -36,6 +35,7 @@ export default function App() {
           <Route path="admin/dashboard" element={<MetricsDashboard />} />
           <Route path="admin/upload" element={<DataUpload />} />
           <Route path="admin/analytics" element={<PredictiveAnalytics />} />
+          <Route path="/admin/cleaning" element={<DataCleaning />} />
           
         </Route>
       </Routes>

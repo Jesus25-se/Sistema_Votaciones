@@ -4,7 +4,7 @@ import Transparencia from "../components/landing/Transparencia";
 import Contacto from "../components/landing/Contacto";
 import Footer from "../components/layout/Footer";
 import QueElegiremos from "../components/landing/QueElegiremos";
-import FinalCard from "../components/landing/FinalCard";
+
 
 export default function Landing() {
   return (
@@ -14,7 +14,7 @@ export default function Landing() {
       <Transparencia />
       <QueElegiremos />
       <Contacto />
-      <FinalCard />
+      
       <Footer />
     </>
   );
